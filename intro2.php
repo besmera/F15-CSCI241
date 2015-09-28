@@ -109,19 +109,25 @@ if($_SERVER["REQUEST_METHOD"]  == "GET")
 
   
  */
-
-$u = 0;
-$v = "Andrew";
-$w = true;
-$x = 5;
-$y = 22;
-$z = false;
-
-if(!$u && $v && (int)($w && $x) < (int)$y && ($z || $y)) 
+$size = $_GET["size"];
+ 
+/*for($row = 1; $row <= $size; $row++)
 {
-	echo "true";
+	for($col=1; $col<=$size; $col++)
+	{
+		echo " *";
+	}
+	echo "<br>";
+}*/
+
+/*
+for($row = 1; $row <= $size; $row++)
+{
+	for($col=1; $col<=$row; $col++)
+	{
+		echo " *";
+	}
+	echo "<br>";
 }
-else {
-	echo "false";
-}
+*/
 
