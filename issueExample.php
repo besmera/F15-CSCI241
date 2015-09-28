@@ -1,7 +1,13 @@
 <pre>
 <?php
 
-$size = $_GET["size"];
+if(isset($_GET["size"]))
+{
+	$size = $_GET["size"];
+}
+else {
+	$size = 0;
+}
 
 for($row = 1; $row <= $size; $row++)
 {
