@@ -1,3 +1,4 @@
+<pre>
 <?php
 
 $size = $_GET["size"];
@@ -8,5 +9,7 @@ for($row = 1; $row <= $size; $row++)
         {
                 echo " *";
         }
-        echo "<br>";
+        echo "\r\n";
 }
+?>
+</pre>
