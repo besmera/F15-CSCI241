@@ -11,7 +11,7 @@ else {
 
 for($row = 1; $row <= $size; $row++)
 {
-        for($col=1; $col<=$size; $col++)
+        for($col=1; $col<=$size - $row +1; $col++)
         {
                 echo " *";
         }
