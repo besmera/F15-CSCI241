@@ -31,14 +31,24 @@ if(isset($_GET["company"]))
 		echo "<p>Name: " . $companies[$company - 1][1]  . "</p>";
 		echo "<p>Phone: " . $companies[$company - 1][2]  . "</p>";
 	}
-	
+	else {
+		header("Location: /~acc.besmera2/F15-CSCI241/callList/callList.php");
+	}
+
 	//Display company details 
-	
+
 }
 else
 {
-	$company = "";
-	
+	echo "<ul>";
+	foreach($companies as $company)
+	{
+		//$company[0] //id
+		//$company[1] //Comany name
+		
+		echo "<li><a href='callList.php?company={$company[0]}'>{$company[1]}</a></li>";
+	}
 	// Display a list companies 
+	echo "<ul>";
 }
-	
+
