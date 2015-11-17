@@ -32,6 +32,15 @@ require_once("header.php");
 
 
 <form action="step1.php" method="POST">
+	
+	
+	
+	<?php 
+	
+	ob_start();
+	
+	?>
+	
 	<label>Username: <input type="text" name="username" value="<?php echo showPreviousValue("username"); ?>"></label>
 	<?php showErrorsFor("username"); ?>
 	
@@ -42,8 +51,25 @@ require_once("header.php");
 	<?php showErrorsFor("password2"); ?>
 	
 	<button type="submit">Submit</button>
+	
+	<?php 
+	
+	$output = ob_get_clean();
+	showRemainingErrors(); 
+	
+	echo $output;
+	
+	?>
+	
+	
+	
+	
+	
 </form>
 
 <?php
+
+
+
 
 require_once("footer.php");

@@ -2,6 +2,25 @@
 
 //Have all the validation logic
 
+function showRemainingErrors()
+{
+
+	echo "<ul>";
+	
+	foreach($_SESSION["errors"] as $errorCategory)
+	{
+		foreach($errorCategory as $error)
+		{
+			echo "<li>$error</li>";
+		}
+	}
+	
+	echo "</ul>";
+	
+	unset($_SESSION["errors"]);
+	
+}
+
 function showErrorsFor($field)
 {
 	if(isset($_SESSION["errors"][$field]))
@@ -16,6 +35,27 @@ function showErrorsFor($field)
 		echo "</ul>";
 		
 	}
+	
+	unset($_SESSION["errors"][$field]);
+	
+}
+
+function isStepTwoValid()
+{
+	
+	unset($_SESSION["errors"]);
+	
+	
+		
+	if(isset($_SESSION["formData"]["email"]) == false)
+	{
+		$_SESSION["errors"]["email"][] = "You did not provide a email for me to use.";
+	}
+	
+	
+	return !isset($_SESSION["errors"]);
+	
+	
 	
 }
 
@@ -55,6 +95,13 @@ function isStepOneValid()
 	{
 		$_SESSION["errors"]["password"][] = "Your passwords do not match.";
 	}
+	
+	
+	//if(registrations != open)
+	//{
+		$_SESSION["errors"]["general"][] = "User Registration is Currently Closed.";		
+//	}	
+	
 	
 	return !isset($_SESSION["errors"]);
 	

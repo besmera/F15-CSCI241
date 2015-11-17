@@ -8,6 +8,7 @@ require_once("validation.php");
 
 Thank you!
 
+
 <?php
 
 require_once("footer.php");
