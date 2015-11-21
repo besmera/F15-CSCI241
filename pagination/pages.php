@@ -106,7 +106,7 @@ $contacts = array(
 
 
 
-$limit = 33;
+$limit = 10;
 $page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
 $total = count($contacts); //total items
 $totalPages = ceil($total/$limit);
@@ -183,9 +183,16 @@ else {
 }
 
 
-for($ct = max(1, $page - 3); $ct < $page + 3  && $ct < min($totalPages,  $page + 3 ) ; $ct++)
+for($ct = max(1, $page - 3); $ct <= $page + 3  && $ct <= min($totalPages,  $page + 3 ) ; $ct++)
 {
-	echo " <a href='pages.php?page=" .  ($ct)  .  "'>$ct</a> ";
+	if($page == $ct)
+	{
+		echo " [$ct] ";
+	}
+	else
+	{
+		echo " <a href='pages.php?page=" .  ($ct)  .  "'>$ct</a> ";
+	}
 }
 
 if($page  + 1 > $totalPages)
