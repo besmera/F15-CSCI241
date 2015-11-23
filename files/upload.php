@@ -69,9 +69,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				//continue processing the file
 				//$filename = bin2hex(openssl_random_pseudo_bytes(10));
 				
-				$filename = md5_file($_FILES["imageFile"]["tmp_name"]);
 				
-				$filename .= getFileExtension($fileType);
+				$filePath = "/home/ACC.besmera2/public_html/F15-CSCI241/files/uploads/";
+							
+				
+				$hash = md5_file($_FILES["imageFile"]["tmp_name"]);
+				$filename = $hash;
+				
+				$ext = getFileExtension($fileType);
+				
+				
+				
+				
+				while(file_exists($filePath . $filename . $ext))
+				{
+					$rand = bin2hex(openssl_random_pseudo_bytes(5));
+					
+					$filename = $hash . "-" . $rand;
+					
+				}
+				
+				move_uploaded_file($_FILES["imageFile"]["tmp_name"], $filePath . $filename . $ext);
 				
 				echo $filename;
 				
